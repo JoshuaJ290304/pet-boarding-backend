@@ -65,6 +65,29 @@ app.post("/add-pet",async(req,res)=>{
 
 })
 
+app.post("/view-pets", async (req, res) => {
+
+    try {
+
+        const data = await Pet.find()
+
+        res.json(data)
+
+    }
+
+    catch (error) {
+
+        res.json({
+
+            status: "error",
+            message: error.message
+
+        })
+
+    }
+
+})
+
 app.listen(3000,()=>{
 
     console.log("Server Started")
